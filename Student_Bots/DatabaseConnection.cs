@@ -19,8 +19,10 @@ namespace Student_Bots
         {
             try
             {
-                conn = new SqlConnection("Data Source=CHANUKADILSHAN;Initial Catalog=StudentBots;Integrated Security=True;Encrypt=False");
-            }catch (Exception ex) { MessageBox.Show(ex.Message); }
+                //conn = new SqlConnection("Data Source=CHANUKADILSHAN;Initial Catalog=StudentBots;Integrated Security=True;Encrypt=False");
+                conn = new SqlConnection("Data Source=DESKTOP-49DCRHM;Initial Catalog=GUI_CW;Integrated Security=True;Encrypt=False");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
 

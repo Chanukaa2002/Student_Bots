@@ -17,6 +17,7 @@ namespace Student_Bots
     {
         Teacher teacher;
         String gender;
+        String Class;
 
         public FormTeacherOpporations()
         {
@@ -27,7 +28,7 @@ namespace Student_Bots
         private void ClearTxt()
         {
             textBoxAge.Text = "";
-            textBoxClassTeacher.Text = "";
+            comboBoxClass.SelectedIndex= 0;
             textBoxNationality.Text = "";
             textBoxTeacherId.Text = "";
             textBoxTeacherName.Text = "";
@@ -58,8 +59,44 @@ namespace Student_Bots
                 {
                     gender = "F";
                 }
+                switch (comboBoxClass.SelectedIndex)
+                {
+                    case 1:
+                        Class = "1";
+                        break;
+                    case 2:
+                        Class = "2";
+                        break;
+                    case 3:
+                        Class = "3";
+                        break;
+                    case 4:
+                        Class = "4";
+                        break;
+                    case 5:
+                        Class = "5";
+                        break;
+                    case 6:
+                        Class = "6";
+                        break;
+                    case 7:
+                        Class = "7";
+                        break;
+                    case 8:
+                        Class = "8";
+                        break;
+                    case 9:
+                        Class = "9";
+                        break;
+                    case 10:
+                        Class = "10";
+                        break;
+                    case 11:
+                        Class = "11";
+                        break;
+                }
                 String Principle_Id = "P001";   
-                teacher.TeacherRegistration(textBoxTeacherId.Text,textBoxTeacherPassword.Text,textBoxTeacherName.Text,textBoxClassTeacher.Text,gender,textBoxNationality.Text,Convert.ToInt32(textBoxAge.Text),Principle_Id);
+                teacher.TeacherRegistration(textBoxTeacherId.Text,textBoxTeacherPassword.Text,textBoxTeacherName.Text,Class,gender,textBoxNationality.Text,Convert.ToInt32(textBoxAge.Text),Principle_Id);
                 dataGridViewTeacher.DataSource = teacher.viewTeacher();
                 ClearTxt();
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
@@ -87,8 +124,44 @@ namespace Student_Bots
                 {
                     gender = "F";
                 }
+                switch (comboBoxClass.SelectedIndex)
+                {
+                    case 1:
+                        Class = "1";
+                        break;
+                    case 2:
+                        Class = "2";
+                        break;
+                    case 3:
+                        Class = "3";
+                        break;
+                    case 4:
+                        Class = "4";
+                        break;
+                    case 5:
+                        Class = "5";
+                        break;
+                    case 6:
+                        Class = "6";
+                        break;
+                    case 7:
+                        Class = "7";
+                        break;
+                    case 8:
+                        Class = "8";
+                        break;
+                    case 9:
+                        Class = "9";
+                        break;
+                    case 10:
+                        Class = "10";
+                        break;
+                    case 11:
+                        Class = "11";
+                        break;
+                }
                 String Principle_Id = "P001";
-                teacher.updateTeacher(textBoxTeacherId.Text, textBoxTeacherPassword.Text, textBoxTeacherName.Text, textBoxClassTeacher.Text, gender, textBoxNationality.Text, Convert.ToInt32(textBoxAge.Text), Principle_Id);
+                teacher.updateTeacher(textBoxTeacherId.Text, textBoxTeacherPassword.Text, textBoxTeacherName.Text, Class, gender, textBoxNationality.Text, Convert.ToInt32(textBoxAge.Text), Principle_Id);
                 dataGridViewTeacher.DataSource = teacher.viewTeacher();
                 ClearTxt();
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
@@ -108,7 +181,7 @@ namespace Student_Bots
                     {
                         dataGridViewTeacher.CurrentRow.Selected = true;
                         textBoxAge.Text = dataGridViewTeacher.Rows[e.RowIndex].Cells["Age"].FormattedValue.ToString();
-                        textBoxClassTeacher.Text = dataGridViewTeacher.Rows[e.RowIndex].Cells["Class"].FormattedValue.ToString();
+                        String Class = dataGridViewTeacher.Rows[e.RowIndex].Cells["Class"].FormattedValue.ToString();
                         textBoxNationality.Text = dataGridViewTeacher.Rows[e.RowIndex].Cells["Nationality"].FormattedValue.ToString();
                         textBoxTeacherId.Text = dataGridViewTeacher.Rows[e.RowIndex].Cells["Teacher_Id"].FormattedValue.ToString();
                         textBoxTeacherName.Text = dataGridViewTeacher.Rows[e.RowIndex].Cells["Teacher_Name"].FormattedValue.ToString();
@@ -122,7 +195,11 @@ namespace Student_Bots
                         {
                             comboBoxGender.SelectedIndex = 2;
                         }
-                    
+                        if (!(Class == "0"))
+                        {
+                            comboBoxClass.SelectedIndex = Convert.ToInt32(Class);
+                        }
+
 
                         //txtBID.Text = dataGrid.Rows[e.RowIndex].Cells["BID"].FormattedValue.ToString();
 
@@ -155,7 +232,7 @@ namespace Student_Bots
         {
             try 
             { 
-                if (textBoxClassTeacher.Text == String.Empty)
+                if (comboBoxClass.SelectedIndex== 0)
                 {
                     lblErrorClass.Visible = true;
                     btnAdd.Enabled = false;
@@ -253,6 +330,15 @@ namespace Student_Bots
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            String teacherId = textBoxTeacherId.Text;
+            teacher.DeleteTeacher(teacherId);
+            dataGridViewTeacher.DataSource = teacher.viewTeacher();
+            ClearTxt();
+
         }
 
         /*   private void textBoxAge_Validating(object sender, CancelEventArgs e)

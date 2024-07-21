@@ -27,7 +27,7 @@ namespace Student_Bots
             dataGridViewMarkDetails.DataSource = marks.view();
         }
 
-        private void checkSubInGrade()//for 1-9 grades
+        private void checkSubInGrade()
         {
             try
             {
@@ -56,6 +56,24 @@ namespace Student_Bots
                 dataGridViewMarkDetails.DataSource = marks.viewGrade(grade);
             }
         }
+
+        //clear
+        private void clear()
+        {
+            comboBoxGrade.SelectedIndex = 12;
+            txtBoxStdId.Text = "";
+            textBoxBuddist.Text = "";
+            textBoxEnglish.Text = "";
+            textBoxHistory.Text = "";
+            textBoxMaths.Text = "";
+            textBoxOp1.Text = "";
+            textBoxOp2.Text = "";
+            textBoxOp3.Text = "";
+            textBoxScience.Text = "";
+            textBoxSinhala.Text = "";
+
+        }
+        
 //--------------------------------------------------------------|Validating|----------------------------------------------------------
         private void textBoxSinhala_Validating(object sender, CancelEventArgs e)
         {
@@ -66,7 +84,7 @@ namespace Student_Bots
                 {
                     lblErrorSinhala.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                   // btnUpdate.Enabled = false;
                 }
                 else
                 {
@@ -77,21 +95,21 @@ namespace Student_Bots
                         {
                             lblErrorSinhala.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                     //       btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorSinhala.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                       //     btnUpdate.Enabled = false;
                         }
                     }
                     else
                     {
                         lblErrorSinhala.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                    //    btnUpdate.Enabled = false;
                     }
                 }
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
@@ -106,7 +124,7 @@ namespace Student_Bots
                 {
                     lblErrorBuddist.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                  //  btnUpdate.Enabled = false;
 
                 }
                 else
@@ -118,14 +136,14 @@ namespace Student_Bots
                         {
                             lblErrorBuddist.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                      //      btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorBuddist.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                      //      btnUpdate.Enabled = false;
 
                         }
                     }
@@ -133,7 +151,7 @@ namespace Student_Bots
                     {
                         lblErrorBuddist.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                      //  btnUpdate.Enabled = false;
                     }
                 }
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
@@ -149,7 +167,7 @@ namespace Student_Bots
                 {
                     lblErrorScience.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                  //  btnUpdate.Enabled = false;
 
                 }
                 else
@@ -161,14 +179,14 @@ namespace Student_Bots
                         {
                             lblErrorScience.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                   //         btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorScience.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                   //         btnUpdate.Enabled = false;
 
                         }
                     }
@@ -176,7 +194,7 @@ namespace Student_Bots
                     {
                         lblErrorScience.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                   //     btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -192,7 +210,7 @@ namespace Student_Bots
                 {
                     lblErrorMaths.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                   // btnUpdate.Enabled = false;
 
                 }
                 else
@@ -204,14 +222,14 @@ namespace Student_Bots
                         {
                             lblErrorMaths.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                     //       btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorMaths.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                     //       btnUpdate.Enabled = false;
 
                         }
                     }
@@ -219,7 +237,7 @@ namespace Student_Bots
                     {
                         lblErrorMaths.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                   //     btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -235,7 +253,7 @@ namespace Student_Bots
                 {
                     lblErrorHistory.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                   // btnUpdate.Enabled = false;
 
                 }
                 else
@@ -247,14 +265,14 @@ namespace Student_Bots
                         {
                             lblErrorHistory.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                         //   btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorHistory.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                           // btnUpdate.Enabled = false;
 
                         }
                     }
@@ -262,7 +280,7 @@ namespace Student_Bots
                     {
                         lblErrorHistory.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                     //   btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -278,7 +296,7 @@ namespace Student_Bots
                 {
                     lblErrorEnglish.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                   // btnUpdate.Enabled = false;
 
                 }
                 else
@@ -290,14 +308,14 @@ namespace Student_Bots
                         {
                             lblErrorEnglish.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                    //        btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorEnglish.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                    //        btnUpdate.Enabled = false;
 
                         }
                     }
@@ -305,7 +323,7 @@ namespace Student_Bots
                     {
                         lblErrorEnglish.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                     //   btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -321,7 +339,7 @@ namespace Student_Bots
                 {
                     lblErrorOp1.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                //    btnUpdate.Enabled = false;
 
                 }
                 else
@@ -333,14 +351,14 @@ namespace Student_Bots
                         {
                             lblErrorOp1.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                //            btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorOp1.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                //            btnUpdate.Enabled = false;
 
                         }
                     }
@@ -348,7 +366,7 @@ namespace Student_Bots
                     {
                         lblErrorOp1.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                //        btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -364,7 +382,7 @@ namespace Student_Bots
                 {
                     lblErrorOp2.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                //    btnUpdate.Enabled = false;
 
                 }
                 else
@@ -376,14 +394,14 @@ namespace Student_Bots
                         {
                             lblErrorOp2.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                //            btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorOp2.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+                //            btnUpdate.Enabled = false;
 
                         }
                     }
@@ -391,7 +409,7 @@ namespace Student_Bots
                     {
                         lblErrorOp2.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                //        btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -407,7 +425,7 @@ namespace Student_Bots
                 {
                     lblErrorOp3.Visible = true;
                     btnAdd.Enabled = false;
-                    btnUpdate.Enabled = false;
+                //    btnUpdate.Enabled = false;
 
                 }
                 else
@@ -419,14 +437,14 @@ namespace Student_Bots
                         {
                             lblErrorOp3.Visible = false;
                             btnAdd.Enabled = true;
-                            btnUpdate.Enabled = true;
+                //            btnUpdate.Enabled = true;
                         }
                         else
                         {
                             MessageBox.Show("Please Enter 0-100");
                             lblErrorOp3.Visible = true;
                             btnAdd.Enabled = false;
-                            btnUpdate.Enabled = false;
+//                            btnUpdate.Enabled = false;
 
                         }
                     }
@@ -434,7 +452,7 @@ namespace Student_Bots
                     {
                         lblErrorOp3.Visible = true;
                         btnAdd.Enabled = false;
-                        btnUpdate.Enabled = false;
+                //        btnUpdate.Enabled = false;
                     }
                 }
             }
@@ -447,8 +465,39 @@ namespace Student_Bots
                            float.Parse(textBoxScience.Text), float.Parse(textBoxMaths.Text), 
                            float.Parse(textBoxHistory.Text), float.Parse(textBoxEnglish.Text), 
                            float.Parse(textBoxOp2.Text), float.Parse(textBoxOp3.Text), 
-                           float.Parse(textBoxOp3.Text), txtBoxStdName.Text);
+                           float.Parse(textBoxOp3.Text), txtBoxStdId.Text);
             dataGridMarks();
+            clear();
+        }
+
+        
+
+        private void dataGridViewMarkDetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    if (dataGridViewMarkDetails.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    {
+                        dataGridViewMarkDetails.CurrentRow.Selected = true;
+                        txtBoxStdId.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Index_No"].FormattedValue.ToString();
+                        textBoxBuddist.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Buddist"].FormattedValue.ToString();
+                        textBoxEnglish.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["English"].FormattedValue.ToString();
+                        textBoxHistory.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["History"].FormattedValue.ToString();
+                        textBoxMaths.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Maths"].FormattedValue.ToString();
+                        textBoxOp1.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Op1"].FormattedValue.ToString();
+                        textBoxOp2.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Op2"].FormattedValue.ToString();
+                        textBoxOp3.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Op3"].FormattedValue.ToString();
+                        textBoxScience.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Science"].FormattedValue.ToString();
+                        textBoxSinhala.Text = dataGridViewMarkDetails.Rows[e.RowIndex].Cells["Sinhala"].FormattedValue.ToString();
+                                                
+
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

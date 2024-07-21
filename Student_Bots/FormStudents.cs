@@ -56,5 +56,7 @@ namespace Student_Bots
                 dataGridViewStudents.DataSource = student.viewByGrade(grade);
             }
         }
+
+        
     }
 }

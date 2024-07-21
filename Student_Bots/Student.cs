@@ -27,7 +27,7 @@ namespace Student_Bots
 
         
 
-        public void AddStudent(String StudentName , String gender , String grade , String Index, String Admission , String DOB , String GardianName, String Address, byte[] ImgData, String Teacher_Id)
+        public void AddStudent(String StudentName , String gender , String grade , String Index, DateTime Admission , DateTime DOB , String GardianName, String Address, String Teacher_Id,String Class)
         {
 
             try
@@ -48,8 +48,8 @@ namespace Student_Bots
                 else
                 {
        
-                    string Insertquery = @"insert into Student(Index_No,Student_Name,Gender,Admission_Date,DOB,Gardion_Name,Addresss,img_Path,Grade,Teacher_Id)
-                                           values(@Index_No,@Student_Name,@Gender,@Admission_Date,@DOB,@Gardian_Name,@Address,@img_Path,@Grade,@Teacher_Id);";//insert img path later
+                    string Insertquery = @"insert into Student(Index_No,Student_Name,Gender,Admission_Date,DOB,Gardion_Name,Addresss,Grade,Teacher_Id,status,Class)
+                                           values(@Index_No,@Student_Name,@Gender,@Admission_Date,@DOB,@Gardian_Name,@Address,@Grade,@Teacher_Id,1,@Class);";//insert img path later
                     using (SqlCommand cmd = new SqlCommand(Insertquery, conn))
                     {
 
@@ -60,9 +60,9 @@ namespace Student_Bots
                         cmd.Parameters.AddWithValue("@DOB", DOB);
                         cmd.Parameters.AddWithValue("@Gardian_Name", GardianName);
                         cmd.Parameters.AddWithValue("@Address", Address);
-                        cmd.Parameters.AddWithValue("@img_Path", ImgData);
                         cmd.Parameters.AddWithValue("@Grade", grade);
                         cmd.Parameters.AddWithValue("@Teacher_Id", Teacher_Id);
+                        cmd.Parameters.AddWithValue("@Class", Class);
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Succesfuly Added A Student");
@@ -84,7 +84,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select Index_No,Student_Name,Gender,Grade,Admission_Date,DOB,Gardion_Name,Addresss from Student", conn);
+                SqlCommand cmd = new SqlCommand("Select Index_No,Student_Name,Gender,Grade,Class,Admission_Date,DOB,Gardion_Name,Addresss from Student where status=1", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -94,12 +94,12 @@ namespace Student_Bots
             finally { conn.Close(); }
         }
         
-        public void updateStudent(String Student_Name, String Gender, String Grade, String Index_No, String Admission_Date, String DOB, String Gardion_Name, String Addresss, byte[] ImgData, String Teacher_Id)
+        public void updateStudent(String Student_Name, String Gender, String Grade, String Index_No, DateTime Admission_Date, DateTime DOB, String Gardion_Name, String Addresss, String Teacher_Id,String Class)
         {
             try
             {
                 conn.Open();
-                string updateQueary = "update Student set Student_Name=@Student_Name,Gender=@Gender,Admission_Date=@Admission_Date,DOB=@DOB,Gardion_Name=@Gardion_Name,Addresss=@Addresss,img_Path=@ImgData,Grade=@Grade, Teacher_Id=@Teacher_Id where Index_No=@Index_No";//insert img path
+                string updateQueary = "update Student set Student_Name=@Student_Name,Gender=@Gender,Admission_Date=@Admission_Date,DOB=@DOB,Gardion_Name=@Gardion_Name,Addresss=@Addresss,Grade=@Grade, Teacher_Id=@Teacher_Id, status=1,Class=@Class where Index_No=@Index_No";//insert img path
                 using (SqlCommand updateStudentCmd = new SqlCommand(updateQueary, conn))
                 {
                     updateStudentCmd.Parameters.AddWithValue("@Index_No", Index_No);
@@ -109,9 +109,9 @@ namespace Student_Bots
                     updateStudentCmd.Parameters.AddWithValue("@DOB", DOB);
                     updateStudentCmd.Parameters.AddWithValue("@Gardion_Name", Gardion_Name);
                     updateStudentCmd.Parameters.AddWithValue("@Addresss", Addresss);
-                    updateStudentCmd.Parameters.AddWithValue("@img_Path", ImgData);
                     updateStudentCmd.Parameters.AddWithValue("@Grade", Grade);
                     updateStudentCmd.Parameters.AddWithValue("@Teacher_Id", Teacher_Id);
+                    updateStudentCmd.Parameters.AddWithValue("@Class", Class);
                     updateStudentCmd.ExecuteNonQuery();
                 }
 
@@ -124,8 +124,8 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select Index_No,Student_Name,Gender,Grade,Admission_Date,DOB,Gardion_Name,Addresss from " +
-                                                   "Student where Grade='"+grade+"'", conn);
+                SqlCommand cmd = new SqlCommand("Select Index_No,Student_Name,Gender,Grade,Class,Admission_Date,DOB,Gardion_Name,Addresss from " +
+                                                   "Student where status=1 and Grade='"+grade+"'", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -140,7 +140,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select Index_No,Student_Name,Gender,Grade,Admission_Date,DOB,Gardion_Name,Addresss from Student where Grade='"+index+"'", conn);
+                SqlCommand cmd = new SqlCommand("Select Index_No,Student_Name,Gender,Grade,Class,Admission_Date,DOB,Gardion_Name,Addresss from Student where status=1 and Index_No='" + index+"'", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -155,7 +155,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                string query = "SELECT Grade, COUNT(*) as StudentCount FROM Student GROUP BY Grade ORDER BY CAST(Grade AS INT) ASC";
+                string query = "SELECT Grade, COUNT(*) as StudentCount FROM Student where status=1 GROUP BY Grade ORDER BY CAST(Grade AS INT) ASC";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -177,7 +177,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                string query = "SELECT Gender, COUNT(*) as StudentCount FROM Student GROUP BY Gender ";
+                string query = "SELECT Gender, COUNT(*) as StudentCount FROM Student  where status=1 GROUP BY Gender ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -202,11 +202,24 @@ namespace Student_Bots
         {
             try
             {
-                //
                 conn.Open();
-            }catch (Exception ex) { MessageBox.Show(ex.Message); }finally { conn.Close(); }
+                string updateQueary = "update Student set status=0 where Index_No=@Index_No";
+                using (SqlCommand updateTeacherCmd = new SqlCommand(updateQueary, conn))
+                {
+                    updateTeacherCmd.Parameters.AddWithValue("@Index_No", Index_No);
+                    updateTeacherCmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally { conn.Close(); }
         }
 
         
+
+
     }
 }

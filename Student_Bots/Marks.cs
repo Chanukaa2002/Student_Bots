@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Student_Bots
 {
-    //එක නමය ලමයින්ගෙ ඔප්ශනල් සබ්ජෙක්ට්ස් වල ප්‍රශ්නේ 
+    
     internal class Marks
     {
         private float avg;
@@ -28,7 +28,7 @@ namespace Student_Bots
                 addAvg(indexNo);
                 conn.Open();
 
-                string query = @"INSERT INTO Std_Sub(Student_Index, Subject_Id, Marks) 
+                string query = @"INSERT INTO Std_Sub(Student_Index, Subject_Id, marks) 
                                  VALUES (@indexNo, 'S001', @sinhala),
                                         (@indexNo, 'S002', @buddist),
                                         (@indexNo, 'S003', @science),
@@ -64,7 +64,7 @@ namespace Student_Bots
                 conn.Close();
             }
         }
-
+        
         private void addAvg(string indexNo)
         {
             try

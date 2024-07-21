@@ -50,8 +50,9 @@
             this.pnlHearBar.Controls.Add(this.panelHeadLine);
             this.pnlHearBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHearBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlHearBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlHearBar.Name = "pnlHearBar";
-            this.pnlHearBar.Size = new System.Drawing.Size(1416, 100);
+            this.pnlHearBar.Size = new System.Drawing.Size(1678, 125);
             this.pnlHearBar.TabIndex = 1;
             // 
             // panelHeadLine
@@ -61,16 +62,18 @@
             this.panelHeadLine.Controls.Add(this.lblTeacherDashBoard);
             this.panelHeadLine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHeadLine.Location = new System.Drawing.Point(0, 0);
+            this.panelHeadLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelHeadLine.Name = "panelHeadLine";
-            this.panelHeadLine.Size = new System.Drawing.Size(1416, 100);
+            this.panelHeadLine.Size = new System.Drawing.Size(1678, 125);
             this.panelHeadLine.TabIndex = 1;
             // 
             // picBoxLogo
             // 
             this.picBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("picBoxLogo.Image")));
-            this.picBoxLogo.Location = new System.Drawing.Point(0, 3);
+            this.picBoxLogo.Location = new System.Drawing.Point(0, 4);
+            this.picBoxLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.picBoxLogo.Name = "picBoxLogo";
-            this.picBoxLogo.Size = new System.Drawing.Size(201, 100);
+            this.picBoxLogo.Size = new System.Drawing.Size(226, 125);
             this.picBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBoxLogo.TabIndex = 2;
             this.picBoxLogo.TabStop = false;
@@ -80,9 +83,9 @@
             this.lblTeacherDashBoard.AutoSize = true;
             this.lblTeacherDashBoard.Font = new System.Drawing.Font("Bahnschrift Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherDashBoard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(190)))), ((int)(((byte)(249)))));
-            this.lblTeacherDashBoard.Location = new System.Drawing.Point(476, 1);
+            this.lblTeacherDashBoard.Location = new System.Drawing.Point(536, 1);
             this.lblTeacherDashBoard.Name = "lblTeacherDashBoard";
-            this.lblTeacherDashBoard.Size = new System.Drawing.Size(601, 96);
+            this.lblTeacherDashBoard.Size = new System.Drawing.Size(717, 115);
             this.lblTeacherDashBoard.TabIndex = 1;
             this.lblTeacherDashBoard.Text = " TEACHER DASHBOARD";
             // 
@@ -93,9 +96,10 @@
             this.pnlMenu.Controls.Add(this.btnStudentsMsrks);
             this.pnlMenu.Controls.Add(this.btnStudentsAdd);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 100);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 125);
+            this.pnlMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(201, 674);
+            this.pnlMenu.Size = new System.Drawing.Size(226, 925);
             this.pnlMenu.TabIndex = 2;
             // 
             // btnLogOut
@@ -108,9 +112,10 @@
             this.btnLogOut.ForeColor = System.Drawing.SystemColors.Control;
             this.btnLogOut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogOut.Image")));
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 623);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 861);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(201, 51);
+            this.btnLogOut.Size = new System.Drawing.Size(226, 64);
             this.btnLogOut.TabIndex = 2;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -126,9 +131,10 @@
             this.btnStudentsMsrks.ForeColor = System.Drawing.SystemColors.Control;
             this.btnStudentsMsrks.Image = ((System.Drawing.Image)(resources.GetObject("btnStudentsMsrks.Image")));
             this.btnStudentsMsrks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStudentsMsrks.Location = new System.Drawing.Point(0, 107);
+            this.btnStudentsMsrks.Location = new System.Drawing.Point(0, 134);
+            this.btnStudentsMsrks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStudentsMsrks.Name = "btnStudentsMsrks";
-            this.btnStudentsMsrks.Size = new System.Drawing.Size(201, 102);
+            this.btnStudentsMsrks.Size = new System.Drawing.Size(226, 128);
             this.btnStudentsMsrks.TabIndex = 1;
             this.btnStudentsMsrks.Text = " Mark";
             this.btnStudentsMsrks.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -146,8 +152,9 @@
             this.btnStudentsAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnStudentsAdd.Image")));
             this.btnStudentsAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStudentsAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnStudentsAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStudentsAdd.Name = "btnStudentsAdd";
-            this.btnStudentsAdd.Size = new System.Drawing.Size(201, 102);
+            this.btnStudentsAdd.Size = new System.Drawing.Size(226, 128);
             this.btnStudentsAdd.TabIndex = 0;
             this.btnStudentsAdd.Text = "Student";
             this.btnStudentsAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -158,22 +165,23 @@
             // 
             this.panelFormLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.panelFormLoad.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFormLoad.Location = new System.Drawing.Point(201, 100);
+            this.panelFormLoad.Location = new System.Drawing.Point(226, 125);
+            this.panelFormLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelFormLoad.Name = "panelFormLoad";
-            this.panelFormLoad.Size = new System.Drawing.Size(1215, 674);
+            this.panelFormLoad.Size = new System.Drawing.Size(1452, 925);
             this.panelFormLoad.TabIndex = 3;
             // 
             // FormTeacherPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1416, 774);
+            this.ClientSize = new System.Drawing.Size(1678, 1050);
             this.Controls.Add(this.panelFormLoad);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlHearBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormTeacherPanel";
             this.Text = "FormTeacherPanel";
             this.pnlHearBar.ResumeLayout(false);

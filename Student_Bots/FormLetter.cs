@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Text;//
+using System.Threading.Tasks;//
+using System.Windows.Forms;//
+using System.Data.SqlClient;//
+using Syncfusion.DocIO.DLS;//
+using Syncfusion.DocIO;//
+using System.IO;
 
 namespace Student_Bots
 {
@@ -20,7 +23,6 @@ namespace Student_Bots
             letter = new Letter();
             student = new Student();
             InitializeComponent();
-            indexList();
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -35,12 +37,12 @@ namespace Student_Bots
                 if(txtBoxCoActivity.Text ==String.Empty)
                 {
                     lblErrorActivity.Visible = true;
-                    btnPrint.Enabled = false;
+                    btnGenarate.Enabled = false;
                 }
                 else
                 {
                     lblErrorActivity.Visible = false;
-                    btnPrint.Enabled = true;
+                    btnGenarate.Enabled = true;
                 }
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -54,14 +56,22 @@ namespace Student_Bots
         {
             if (comboBoxIndex.SelectedValue != null)
             {
-                string index = comboBoxIndex.SelectedValue.ToString();
-                dataGridViewStdDetail.DataSource = student.viewByIndex(index);
+                if (comboBoxIndex.SelectedValue.ToString() != "0")
+                {
+
+                    string index = comboBoxIndex.SelectedValue.ToString();
+                    dataGridViewStdDetail.DataSource = student.viewByIndex(index);
+                }
+                
             }
         }
 
         private void indexList()
         {
-            DataTable dt = letter.GetIndexList();
+            int grade = comboBoxGrade.SelectedIndex;
+            
+
+            DataTable dt = letter.GetIndexList(grade);
             if (dt != null)
             {
                 comboBoxIndex.DataSource = dt;
@@ -76,7 +86,30 @@ namespace Student_Bots
         private void clear()
         {
             txtBoxCoActivity.Text = "";
-            comboBoxIndex.Text = "-Select-";
+            comboBoxIndex.SelectedIndex = 0;
+            comboBoxGrade.SelectedIndex = 0;
         }
+
+        private void comboBoxGrade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            indexList();
+        }
+
+        private void btnGenarate_Click(object sender, EventArgs e)
+        {
+            if (comboBoxIndex.SelectedValue != null)
+            {
+                string studentIndex = comboBoxIndex.SelectedValue.ToString();
+                string coActivities = txtBoxCoActivity.Text;
+                Letter letter = new Letter();
+                letter.GenerateStudentLetter(studentIndex, coActivities);
+                clear();
+            }
+
+        }
+        
+       
+
+
     }
 }

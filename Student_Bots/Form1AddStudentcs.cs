@@ -16,6 +16,7 @@ namespace Student_Bots
         Student student;      
         String Gender;
         String Grade= "";
+        String Class = "";
 
         public Form1AddStudentcs()
         {
@@ -37,11 +38,12 @@ namespace Student_Bots
             txtBoxIndex.Text = "";
             txtBoxIndex.Text = "";
             txtBoxStdName.Text = "";
-            comboBoxGrade.Text= "";
+            comboBoxGrade.SelectedIndex = 0;
             radioButtonFemale.Checked = false;
             radioButtonMale.Checked = false;
             dateTimePickerAddmition.Value = DateTime.Now;
             dateTimePickerDob.Value = DateTime.Now;
+            comboBoxClass.SelectedIndex = 0;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -91,17 +93,27 @@ namespace Student_Bots
                         Grade = "11";
                         break;
                 }
-                
-                byte[] imageData = null;
-                if (pictureBoxStdImage.Image != null)
+                switch (comboBoxClass.SelectedIndex)
                 {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        pictureBoxStdImage.Image.Save(ms, pictureBoxStdImage.Image.RawFormat);
-                        imageData = ms.ToArray();
-                    }
+                    case 1:
+                        Class = "A";
+                        break;
+                    case 2:
+                        Class = "B";
+                        break;
+                    case 3:
+                        Class = "C";
+                        break;
+                    case 4:
+                        Class = "D";
+                        break;
+                    case 5:
+                        Class = "E";
+                        break;
                 }
-                student.AddStudent(txtBoxStdName.Text, Gender, Grade, txtBoxIndex.Text, Convert.ToString(dateTimePickerAddmition.Value),Convert.ToString( dateTimePickerDob.Value), txtBoxGardian.Text, txtBoxAddress.Text, imageData, teacher_Id);
+
+
+                student.AddStudent(txtBoxStdName.Text, Gender, Grade, txtBoxIndex.Text,dateTimePickerAddmition.Value, dateTimePickerDob.Value, txtBoxGardian.Text, txtBoxAddress.Text, teacher_Id,Class);
                 ClearText();
                 dataGridStudent();
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
@@ -157,17 +169,27 @@ namespace Student_Bots
                         Grade = "11";
                         break;
                 }
-                String teacher_Id = "T001";//fix error
-                byte[] imageData = null;
-                if (pictureBoxStdImage.Image != null)
+
+                switch (comboBoxClass.SelectedIndex)
                 {
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        pictureBoxStdImage.Image.Save(ms, pictureBoxStdImage.Image.RawFormat);
-                        imageData = ms.ToArray();
-                    }
+                    case 1:
+                        Class = "A";
+                        break;
+                    case 2:
+                        Class = "B";
+                        break;
+                    case 3:
+                        Class = "C";
+                        break;
+                    case 4:
+                        Class = "D";
+                        break;
+                    case 5:
+                        Class = "E";
+                        break;
                 }
-                student.updateStudent(txtBoxStdName.Text, Gender, Grade, txtBoxIndex.Text, Convert.ToString(dateTimePickerAddmition.Value), Convert.ToString(dateTimePickerDob.Value), txtBoxGardian.Text, txtBoxAddress.Text, imageData, teacher_Id);
+                String teacher_Id = "T001";//fix error
+                student.updateStudent(txtBoxStdName.Text, Gender, Grade, txtBoxIndex.Text,dateTimePickerAddmition.Value,dateTimePickerDob.Value, txtBoxGardian.Text, txtBoxAddress.Text,  teacher_Id,Class);
                 dataGridStudent();
                 //dataGridViewStudents.DataSource = student.viewStudent();
                 ClearText();
@@ -197,11 +219,34 @@ namespace Student_Bots
                         txtBoxGardian.Text = dataGridViewStudents.Rows[e.RowIndex].Cells["Gardion_Name"].FormattedValue.ToString();
                         txtBoxIndex.Text = dataGridViewStudents.Rows[e.RowIndex].Cells["Index_No"].FormattedValue.ToString();
                         txtBoxStdName.Text = dataGridViewStudents.Rows[e.RowIndex].Cells["Student_Name"].FormattedValue.ToString();
-                        comboBoxGrade.Text = dataGridViewStudents.Rows[e.RowIndex].Cells["Grade"].FormattedValue.ToString();
+                        String grade = dataGridViewStudents.Rows[e.RowIndex].Cells["Grade"].FormattedValue.ToString();
                         String gender = dataGridViewStudents.Rows[e.RowIndex].Cells["Gender"].FormattedValue.ToString();
                         String admission = dataGridViewStudents.Rows[e.RowIndex].Cells["Admission_Date"].FormattedValue.ToString();
                         String dob = dataGridViewStudents.Rows[e.RowIndex].Cells["DOB"].FormattedValue.ToString();
-                        
+                        String Class = dataGridViewStudents.Rows[e.RowIndex].Cells["Class"].FormattedValue.ToString();
+
+                        if (!(grade == "0"))
+                        {
+                            comboBoxGrade.SelectedIndex = Convert.ToInt32(grade);
+                        }
+                        switch (Class)
+                        {
+                            case "A":
+                                comboBoxClass.SelectedIndex = 1;
+                                break;
+                            case "B":
+                                comboBoxClass.SelectedIndex = 2;
+                                break;
+                            case "C":
+                                comboBoxClass.SelectedIndex = 3;
+                                break;
+                            case "D":
+                                comboBoxClass.SelectedIndex = 4;
+                                break;
+                            case "E":
+                                comboBoxClass.SelectedIndex = 5;
+                                break;
+                        }
                         //gender
                         if(gender == "M")
                         {
@@ -220,21 +265,7 @@ namespace Student_Bots
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        //-----------------------------<IMG>----------------------------------------
-        String img;
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    pictureBoxStdImage.Image = new Bitmap(openFileDialog.FileName);
-                }
-                img = openFileDialog.FileName;
-            }catch(Exception ex) { MessageBox.Show(ex.Message); }
-        }
+
 
         //-------------Validating--------------------------------------------
         private void txtBoxStdName_Validating(object sender, CancelEventArgs e)

@@ -13,6 +13,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Student_Bots
 {
@@ -94,8 +95,8 @@ namespace Student_Bots
                 }
                 else
                 {
-                    string Insertquery = @"insert into Teacher(Teacher_Id,Password,Teacher_Name,Class,Gender,Nationality,Age,Principle_Id)
-                                           values(@Teacher_Id,@Password,@Teacher_Name,@Class,@Gender,@Nationality,@Age,@Principle_Id);";
+                    string Insertquery = @"insert into Teacher(Teacher_Id,Password,Teacher_Name,Class,Gender,Nationality,Age,Principle_Id,status)
+                                           values(@Teacher_Id,@Password,@Teacher_Name,@Class,@Gender,@Nationality,@Age,@Principle_Id,1);";
                     using (SqlCommand cmd = new SqlCommand(Insertquery, conn))
                     {
 
@@ -127,7 +128,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                string updateQueary = "update Teacher set Password=@Password , Teacher_Name =@Teacher_Name,Class=@Class,Gender=@Gender ,Nationality=@Nationality,Age=@Age where Teacher_Id=@Teacher_Id";
+                string updateQueary = "update Teacher set Password=@Password , Teacher_Name =@Teacher_Name,Class=@Class,Gender=@Gender ,Nationality=@Nationality,Age=@Age status=1 where Teacher_Id=@Teacher_Id";
                 using(SqlCommand updateTeacherCmd = new SqlCommand(updateQueary, conn))
                 {
                     updateTeacherCmd.Parameters.AddWithValue("@Teacher_Id", Teacher_Id);
@@ -154,7 +155,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                String queary = "Select Teacher_Id,Teacher_Name,Class,Gender,Nationality,Age,Password from Teacher";
+                String queary = "Select Teacher_Id,Teacher_Name,Class,Gender,Nationality,Age,Password from Teacher where status=1";
                 SqlCommand cmd = new SqlCommand(queary, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -171,7 +172,7 @@ namespace Student_Bots
             try
             {
                 conn.Open();
-                string query = "SELECT Gender, COUNT(*) as TeacherCount FROM Teacher GROUP BY Gender ";
+                string query = "SELECT Gender, COUNT(*) as TeacherCount FROM Teacher where status=1  GROUP BY Gender ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -190,7 +191,24 @@ namespace Student_Bots
         }
 
 
-        //public void DeleteTeacher(){}
+        public void DeleteTeacher(String teacherId){
+            try
+            {
+                conn.Open();
+                string updateQueary = "update Teacher set status=0 where Teacher_Id=@Teacher_Id";
+                using (SqlCommand updateTeacherCmd = new SqlCommand(updateQueary, conn))
+                {
+                    updateTeacherCmd.Parameters.AddWithValue("@Teacher_Id", teacherId);
+                    updateTeacherCmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally { conn.Close(); }
+        }
 
     }
 }

@@ -31,14 +31,13 @@
             this.comboBoxGrade = new System.Windows.Forms.ComboBox();
             this.lblGrade = new System.Windows.Forms.Label();
             this.dataGridViewMarkDetails = new System.Windows.Forms.DataGridView();
-            this.txtBoxStdName = new System.Windows.Forms.TextBox();
+            this.txtBoxStdId = new System.Windows.Forms.TextBox();
             this.lblStdNo = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panelSubjects = new System.Windows.Forms.Panel();
             this.lblErrorMaths = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblErrorHistory = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.lblErrorScience = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblErrorBuddist = new System.Windows.Forms.Label();
@@ -114,14 +113,15 @@
             this.dataGridViewMarkDetails.RowTemplate.Height = 24;
             this.dataGridViewMarkDetails.Size = new System.Drawing.Size(604, 191);
             this.dataGridViewMarkDetails.TabIndex = 19;
+            this.dataGridViewMarkDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMarkDetails_CellClick);
             // 
-            // txtBoxStdName
+            // txtBoxStdId
             // 
-            this.txtBoxStdName.Font = new System.Drawing.Font("Bahnschrift", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxStdName.Location = new System.Drawing.Point(230, 86);
-            this.txtBoxStdName.Name = "txtBoxStdName";
-            this.txtBoxStdName.Size = new System.Drawing.Size(323, 35);
-            this.txtBoxStdName.TabIndex = 1;
+            this.txtBoxStdId.Font = new System.Drawing.Font("Bahnschrift", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxStdId.Location = new System.Drawing.Point(230, 86);
+            this.txtBoxStdId.Name = "txtBoxStdId";
+            this.txtBoxStdId.Size = new System.Drawing.Size(323, 35);
+            this.txtBoxStdId.TabIndex = 1;
             // 
             // lblStdNo
             // 
@@ -150,7 +150,6 @@
             this.panelSubjects.Controls.Add(this.lblErrorMaths);
             this.panelSubjects.Controls.Add(this.btnClear);
             this.panelSubjects.Controls.Add(this.lblErrorHistory);
-            this.panelSubjects.Controls.Add(this.btnUpdate);
             this.panelSubjects.Controls.Add(this.lblErrorScience);
             this.panelSubjects.Controls.Add(this.btnAdd);
             this.panelSubjects.Controls.Add(this.lblErrorBuddist);
@@ -181,11 +180,11 @@
             // lblErrorMaths
             // 
             this.lblErrorMaths.AutoSize = true;
-            this.lblErrorMaths.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorMaths.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorMaths.ForeColor = System.Drawing.Color.Red;
             this.lblErrorMaths.Location = new System.Drawing.Point(509, 231);
             this.lblErrorMaths.Name = "lblErrorMaths";
-            this.lblErrorMaths.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorMaths.Size = new System.Drawing.Size(31, 38);
             this.lblErrorMaths.TabIndex = 27;
             this.lblErrorMaths.Text = "*";
             this.lblErrorMaths.Visible = false;
@@ -207,37 +206,23 @@
             // lblErrorHistory
             // 
             this.lblErrorHistory.AutoSize = true;
-            this.lblErrorHistory.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorHistory.ForeColor = System.Drawing.Color.Red;
             this.lblErrorHistory.Location = new System.Drawing.Point(509, 299);
             this.lblErrorHistory.Name = "lblErrorHistory";
-            this.lblErrorHistory.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorHistory.Size = new System.Drawing.Size(31, 38);
             this.lblErrorHistory.TabIndex = 28;
             this.lblErrorHistory.Text = "*";
             this.lblErrorHistory.Visible = false;
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(114)))), ((int)(((byte)(239)))));
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Bahnschrift", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnUpdate.Location = new System.Drawing.Point(749, 273);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(180, 73);
-            this.btnUpdate.TabIndex = 10;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
             // lblErrorScience
             // 
             this.lblErrorScience.AutoSize = true;
-            this.lblErrorScience.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorScience.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorScience.ForeColor = System.Drawing.Color.Red;
             this.lblErrorScience.Location = new System.Drawing.Point(509, 154);
             this.lblErrorScience.Name = "lblErrorScience";
-            this.lblErrorScience.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorScience.Size = new System.Drawing.Size(31, 38);
             this.lblErrorScience.TabIndex = 29;
             this.lblErrorScience.Text = "*";
             this.lblErrorScience.Visible = false;
@@ -249,7 +234,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Bahnschrift", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAdd.Location = new System.Drawing.Point(557, 276);
+            this.btnAdd.Location = new System.Drawing.Point(731, 273);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(180, 70);
             this.btnAdd.TabIndex = 9;
@@ -260,11 +245,11 @@
             // lblErrorBuddist
             // 
             this.lblErrorBuddist.AutoSize = true;
-            this.lblErrorBuddist.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorBuddist.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorBuddist.ForeColor = System.Drawing.Color.Red;
             this.lblErrorBuddist.Location = new System.Drawing.Point(508, 96);
             this.lblErrorBuddist.Name = "lblErrorBuddist";
-            this.lblErrorBuddist.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorBuddist.Size = new System.Drawing.Size(31, 38);
             this.lblErrorBuddist.TabIndex = 30;
             this.lblErrorBuddist.Text = "*";
             this.lblErrorBuddist.Visible = false;
@@ -281,11 +266,11 @@
             // lblErrorSinhala
             // 
             this.lblErrorSinhala.AutoSize = true;
-            this.lblErrorSinhala.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorSinhala.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorSinhala.ForeColor = System.Drawing.Color.Red;
             this.lblErrorSinhala.Location = new System.Drawing.Point(508, 22);
             this.lblErrorSinhala.Name = "lblErrorSinhala";
-            this.lblErrorSinhala.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorSinhala.Size = new System.Drawing.Size(31, 38);
             this.lblErrorSinhala.TabIndex = 31;
             this.lblErrorSinhala.Text = "*";
             this.lblErrorSinhala.Visible = false;
@@ -464,11 +449,11 @@
             // lblErrorOp3
             // 
             this.lblErrorOp3.AutoSize = true;
-            this.lblErrorOp3.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorOp3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorOp3.ForeColor = System.Drawing.Color.Red;
             this.lblErrorOp3.Location = new System.Drawing.Point(1114, 448);
             this.lblErrorOp3.Name = "lblErrorOp3";
-            this.lblErrorOp3.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorOp3.Size = new System.Drawing.Size(31, 38);
             this.lblErrorOp3.TabIndex = 43;
             this.lblErrorOp3.Text = "*";
             this.lblErrorOp3.Visible = false;
@@ -476,11 +461,11 @@
             // lblErrorOp2
             // 
             this.lblErrorOp2.AutoSize = true;
-            this.lblErrorOp2.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorOp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorOp2.ForeColor = System.Drawing.Color.Red;
             this.lblErrorOp2.Location = new System.Drawing.Point(1113, 390);
             this.lblErrorOp2.Name = "lblErrorOp2";
-            this.lblErrorOp2.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorOp2.Size = new System.Drawing.Size(31, 38);
             this.lblErrorOp2.TabIndex = 44;
             this.lblErrorOp2.Text = "*";
             this.lblErrorOp2.Visible = false;
@@ -488,11 +473,11 @@
             // lblErrorOp1
             // 
             this.lblErrorOp1.AutoSize = true;
-            this.lblErrorOp1.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorOp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorOp1.ForeColor = System.Drawing.Color.Red;
             this.lblErrorOp1.Location = new System.Drawing.Point(1110, 323);
             this.lblErrorOp1.Name = "lblErrorOp1";
-            this.lblErrorOp1.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorOp1.Size = new System.Drawing.Size(31, 38);
             this.lblErrorOp1.TabIndex = 45;
             this.lblErrorOp1.Text = "*";
             this.lblErrorOp1.Visible = false;
@@ -500,11 +485,11 @@
             // lblErrorEnglish
             // 
             this.lblErrorEnglish.AutoSize = true;
-            this.lblErrorEnglish.Font = new System.Drawing.Font("Bauhaus 93", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorEnglish.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorEnglish.ForeColor = System.Drawing.Color.Red;
             this.lblErrorEnglish.Location = new System.Drawing.Point(1110, 260);
             this.lblErrorEnglish.Name = "lblErrorEnglish";
-            this.lblErrorEnglish.Size = new System.Drawing.Size(35, 38);
+            this.lblErrorEnglish.Size = new System.Drawing.Size(31, 38);
             this.lblErrorEnglish.TabIndex = 46;
             this.lblErrorEnglish.Text = "*";
             this.lblErrorEnglish.Visible = false;
@@ -518,7 +503,7 @@
             this.Controls.Add(this.lblErrorOp3);
             this.Controls.Add(this.panelSubjects);
             this.Controls.Add(this.lblErrorOp2);
-            this.Controls.Add(this.txtBoxStdName);
+            this.Controls.Add(this.txtBoxStdId);
             this.Controls.Add(this.lblErrorOp1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblErrorEnglish);
@@ -541,7 +526,7 @@
         private System.Windows.Forms.ComboBox comboBoxGrade;
         private System.Windows.Forms.Label lblGrade;
         private System.Windows.Forms.DataGridView dataGridViewMarkDetails;
-        private System.Windows.Forms.TextBox txtBoxStdName;
+        private System.Windows.Forms.TextBox txtBoxStdId;
         private System.Windows.Forms.Label lblStdNo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panelSubjects;
@@ -564,7 +549,6 @@
         private System.Windows.Forms.TextBox textBoxSinhala;
         private System.Windows.Forms.Label lblSinhala;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblErrorMaths;
         private System.Windows.Forms.Label lblErrorHistory;
